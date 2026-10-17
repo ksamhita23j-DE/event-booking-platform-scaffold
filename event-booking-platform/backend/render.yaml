@@ -1,0 +1,24 @@
+# Render.com "Blueprint" config - optional, but lets you deploy by clicking
+# "New +" -> "Blueprint" and pointing Render at this repo, instead of
+# clicking through the manual web service setup.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: event-booking-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
